@@ -18,7 +18,7 @@ public class RescueFrogsTask : GameplayTaskSO
     {
       nameLocalisationKey = ContractQueenPlugin.contractName,
       descriptionLocalisationKey = ContractQueenPlugin.contractDesc,
-      pointValue = 150
+      pointValue = 200
     };
 
     return frog;
