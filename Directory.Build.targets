@@ -10,6 +10,7 @@
       https://nuget.bepinex.dev/v3/index.json;
       https://nuget.windows10ce.com/nuget/v3/index.json
     </RestoreAdditionalProjectSources>
+    <PublicizerRuntimeStrategies>unsafe</PublicizerRuntimeStrategies>
   </PropertyGroup>
 
   <!-- Build dependencies -->
@@ -56,11 +57,8 @@
       Learn more at: https://github.com/BepInEx/BepInEx.AssemblyPublicizer
     -->
 
-    <Reference Include="Assembly-CSharp">
-      <HintPath>$(ManagedDir)Assembly-CSharp.dll</HintPath>
-      <Private>false</Private>
-    </Reference>
-    <Publicize Include="Assembly-CSharp" IncludeVirtualMembers="false" />
+    <Publicize Include="Assembly-CSharp" IncludeVirtualMembers="false"
+      IncludeCompilerGeneratedMembers="false" />
   </ItemGroup>
 
   <!--
