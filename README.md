@@ -1,31 +1,11 @@
 # ContractQueen
 
-Describe your project here!
+A library for adding custom contracts to YAPYAP. Manages inserting and sorting contracts deterministically so all clients have the same contract IDs
 
-## Template Instructions
+## Built-In Contracts
 
-You can remove this section after you've set up your project.
+- **Rescue Frogs:** An example contract to bring 5 frogs out of the tower and release them in your base
 
-Next steps:
+## Usage Details for Modders
 
-- Create a copy of the `Config.Build.user.props.template` file and name it `Config.Build.user.props`
-  - This will automate copying your plugin assembly to `BepInEx/plugins/`
-  - Configure the paths to point to your game path and your `BepInEx/plugins/`
-  - Game assembly references should work if the path to the game is valid
-- Search `TODO` in the whole project to see what you should configure or modify
-
-### Thunderstore Packaging
-
-This template comes with Thunderstore packaging built-in, using [TCLI](<https://github.com/thunderstore-io/thunderstore-cli>).
-
-You can build Thunderstore packages by building with release configuration:
-
-```sh
-dotnet build -c Release -v d
-```
-
-> [!NOTE]  
-> You can learn about different build options with `dotnet build --help`.  
-> `-c` is short for `--configuration` and `-v d` is `--verbosity detailed`.
-
-The built package will be found at `artifacts/thunderstore/`.
+TBA, for now check how the plugin does it and feel free to request help in the modding discord
