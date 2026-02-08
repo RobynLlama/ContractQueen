@@ -1,0 +1,5 @@
+[*.cs]
+
+# Harmony003: Harmony non-ref patch parameters modified
+# False positives on members with no side-effects, rarely useful
+dotnet_diagnostic.Harmony003.severity = silent
