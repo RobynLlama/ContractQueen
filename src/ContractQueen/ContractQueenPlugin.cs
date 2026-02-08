@@ -39,10 +39,11 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     Log.LogInfo($"Patch count: {patcher.GetPatchedMethods().Count()}");
     SceneManager.sceneLoaded += OnSceneChange;
 
-    //Debug contracts are not included except in debug builds
-#if DEBUG
     ContractsModule contracts = new(Id);
-    contracts.RegisterContract("RescueFrogsQuest1", RescueFrogsTask.Factory());
+    contracts.RegisterContract("RescueFrogsQuest", RescueFrogsTask.Factory());
+
+#if DEBUG
+    //Adds debug contracts for debugging
     contracts.RegisterContract("RescueFrogsQuest2", RescueFrogsTask.Factory());
     contracts.RegisterContract("RescueFrogsQuest3", RescueFrogsTask.Factory());
     contracts.RegisterContract("RescueFrogsQuest4", RescueFrogsTask.Factory());
