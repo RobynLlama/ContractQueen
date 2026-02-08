@@ -33,6 +33,7 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
 
     Harmony patcher = new(Id);
     patcher.PatchAll(typeof(DungeonTasksPatches));
+    patcher.PatchAll(typeof(PawnInventoryPatches));
 
     Log.LogInfo($"Patch count: {patcher.GetPatchedMethods().Count()}");
     SceneManager.sceneLoaded += OnSceneChange;
