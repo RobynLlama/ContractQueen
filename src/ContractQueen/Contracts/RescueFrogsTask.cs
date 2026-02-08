@@ -1,7 +1,6 @@
-#if DEBUG
-
 using System;
-using ContractQueen.Events;
+using ContractQueen.Behaviors;
+using ContractQueen.ContractEvents;
 using UnityEngine;
 using YAPYAP;
 
@@ -15,12 +14,14 @@ public class RescueFrogsTask : GameplayTaskSO
 
   public static RescueFrogsTask Factory()
   {
-    return new()
+    var frog = new RescueFrogsTask()
     {
       nameLocalisationKey = ContractQueenPlugin.contractName,
       descriptionLocalisationKey = ContractQueenPlugin.contractDesc,
-      pointValue = 30000
+      pointValue = 150
     };
+
+    return frog;
   }
 
   public override bool CanBeCreated()
@@ -35,19 +36,22 @@ public class RescueFrogsTask : GameplayTaskSO
 
   public override void SubscribeToProgressEvents(GameplayTask runtimeTask)
   {
-    var del = () => runtimeTask.AdvanceProgress();
+    var del = (FrogContractBehavior frog) =>
+    {
+      ContractQueenPlugin.Log.LogMessage("Counted a frog for a quest");
+      runtimeTask.AdvanceProgress();
+    };
+
     runtimeTask.SetProgressHandler(del);
-    EventManager.TestEvent += del;
+    Events.FrogCountedEvent += del;
   }
 
   public override void UnsubscribeFromProgressEvents(GameplayTask runtimeTask)
   {
-    if (runtimeTask.GetProgressHandler() is not Action value)
+    if (runtimeTask.GetProgressHandler() is not Action<FrogContractBehavior> value)
       return;
 
-    EventManager.TestEvent -= value;
+    Events.FrogCountedEvent -= value;
     runtimeTask.SetProgressHandler(null);
   }
 }
-
-#endif
