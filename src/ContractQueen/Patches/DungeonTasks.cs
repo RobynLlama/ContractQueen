@@ -7,7 +7,7 @@ namespace ContractQueen.Patches;
 internal class DungeonTasksPatches
 {
 
-  [HarmonyPatch(typeof(DungeonTasks), "Awake"), HarmonyPostfix]
+  [HarmonyPatch(typeof(DungeonTasks), nameof(DungeonTasks.Awake)), HarmonyPostfix]
   internal static void AddContractsToRandomPool()
   {
     var customContracts = ContractsRegistry.LockedList;
