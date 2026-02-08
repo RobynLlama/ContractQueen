@@ -4,7 +4,6 @@ using BepInEx;
 using BepInEx.Logging;
 using ContractQueen.ContractManager;
 using ContractQueen.Contracts;
-using ContractQueen.Events;
 using ContractQueen.Patches;
 using HarmonyLib;
 using UnityEngine.SceneManagement;
@@ -35,11 +34,10 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     Harmony patcher = new(Id);
     patcher.PatchAll(typeof(DungeonTasksPatches));
     patcher.PatchAll(typeof(NetworkPuppetPropPatches));
+    patcher.PatchAll(typeof(FrogStateMachinePatches));
 
     Log.LogInfo($"Patch count: {patcher.GetPatchedMethods().Count()}");
     SceneManager.sceneLoaded += OnSceneChange;
-    SceneManager.sceneLoaded += EventManager.OnSceneChange;
-    EventManager.OnNewItemPickup += (item) => Log.LogMessage($"Newly picked up: {item.DisplayName}({item.GetInstanceID()})");
 
     //Debug contracts are not included except in debug builds
 #if DEBUG
