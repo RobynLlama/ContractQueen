@@ -8,4 +8,4 @@ A library for adding custom contracts to YAPYAP. Manages inserting and sorting c
 
 ## Usage Details for Modders
 
-TBA, for now check how the plugin does it and feel free to request help in the modding discord
+For full documentation of how to use Contract Queen in your project and register your own contracts see [Documentation](https://github.com/RobynLlama/ContractQueen/tree/main/Documentation)
