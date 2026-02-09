@@ -2,6 +2,10 @@
 
 The Contract Queen Documentation contains everything you need to understand creating and registering contracts in YAPYAP.
 
+> 👑 The Queen's Advice
+>
+> Sections like this contain tips, advice and best practice information related to the current topic.
+
 ## Quick Links
 
 - **[StarterKit](./StarterKit/):** Contains plug-n-play sample that you can drop into an existing project
