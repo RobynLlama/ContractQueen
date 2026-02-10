@@ -5,10 +5,7 @@ namespace ContractQueen.Behaviors;
 
 public class FrogContractBehavior : MonoBehaviour
 {
-
-#nullable disable
   public NetworkPuppetProp Owner { get; protected set; }
-#nullable enable
   public bool HasBeenCounted { get; protected set; } = false;
 
   private void Awake()
