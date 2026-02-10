@@ -14,7 +14,7 @@ namespace ContractQueen;
 [BepInAutoPlugin]
 public partial class ContractQueenPlugin : BaseUnityPlugin
 {
-  internal static ManualLogSource Log { get; private set; } = null!;
+  internal static ManualLogSource Log { get; private set; }
 
   public const string contractName = "CONTRACT_QUEEN_TEST_CONTRACT_NAME";
   public const string contractDesc = "CONTRACT_QUEEN_TEST_CONTRACT_DESC";
