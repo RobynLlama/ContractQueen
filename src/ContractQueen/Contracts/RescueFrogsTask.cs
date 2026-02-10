@@ -38,7 +38,7 @@ public class RescueFrogsTask : GameplayTaskSO
   {
     var del = (FrogContractBehavior frog) =>
     {
-      ContractQueenPlugin.Log.LogMessage("Counted a frog for a quest");
+      ContractQueenPlugin.Log.LogDebug("Counted a frog for a quest");
       runtimeTask.AdvanceProgress();
     };
 
