@@ -12,6 +12,7 @@ using YapLocalizer;
 namespace ContractQueen;
 
 [BepInAutoPlugin]
+[BepInDependency("com.github.darmuh.yaplocalizer")]
 public partial class ContractQueenPlugin : BaseUnityPlugin
 {
   internal static ManualLogSource Log { get; private set; }
