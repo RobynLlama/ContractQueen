@@ -26,6 +26,10 @@
     target="plugins/"
 
   [[build.copy]]
+    source="../../artifacts/bin/ContractQueen/release/dev.mamallama.contractqueen.xml"
+    target="plugins/"
+
+  [[build.copy]]
     source="../../CHANGELOG.md"
     target="/"
 
