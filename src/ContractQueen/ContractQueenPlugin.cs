@@ -38,7 +38,6 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     patcher.PatchAll(typeof(FrogStateMachinePatches));
 
     Log.LogInfo($"Patch count: {patcher.GetPatchedMethods().Count()}");
-    SceneManager.sceneLoaded += OnSceneChange;
 
     ContractsModule contracts = new(Id);
     contracts.RegisterContract("RescueFrogsQuest", RescueFrogsTask.Create());
@@ -52,19 +51,5 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     contracts.RegisterContract("RescueFrogsQuest6", RescueFrogsTask.Create());
 #endif
 
-  }
-
-  private bool MainMenuSeen = false;
-
-  private void OnSceneChange(Scene arg0, LoadSceneMode arg1)
-  {
-    if (MainMenuSeen)
-      return;
-
-    if (arg0.name.Equals("menu", StringComparison.OrdinalIgnoreCase))
-    {
-      ContractsRegistry.Lock();
-      MainMenuSeen = true;
-    }
   }
 }
