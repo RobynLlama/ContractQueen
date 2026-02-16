@@ -79,7 +79,7 @@ public class FrogDatabaseDTO : FrogDataModel
       var mud = new AssetMUD(item.GetComponent<FrogStateMachine>());
 
       item.Data.MUDToken = mud.Identifier;
-      ContractQueenPlugin.Log.LogDebug($"Mapped a DTO for frog:{mud.GetDigest()}");
+      ContractQueenPlugin.Log.LogDebug($"Saved a DTO for frog:{mud.GetDigest()}");
       FrogData.Add(item.Data);
     }
 
