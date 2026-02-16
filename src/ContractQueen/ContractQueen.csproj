@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="darmuh-YapLocalizer" Version="*" />
+    <PackageReference Include="Robyn-FrogDataLib" Version="*" />
     <PackageReference Include="Krafs.Publicizer" Version="2.3.0">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
@@ -22,10 +23,6 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Robyn-FrogDataLib" Version="*" />
   </ItemGroup>
 
   <!--
