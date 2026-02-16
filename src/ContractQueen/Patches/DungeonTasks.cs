@@ -10,10 +10,12 @@ internal class DungeonTasksPatches
   [HarmonyPatch(typeof(DungeonTasks), nameof(DungeonTasks.Awake)), HarmonyPostfix]
   internal static void AddContractsToRandomPool()
   {
+    ContractsRegistry.Lock();
+
     var customContracts = ContractsRegistry.LockedList;
-    var constants = DungeonTasks.Instance.constantTasks;
-    var rng = DungeonTasks.Instance.randomTasks;
-    var collectibles = DungeonTasks.Instance.collectableTasks;
+    var constants = ContractsRegistry.FrozenConstants;
+    var rng = ContractsRegistry.FrozenRandoms;
+    var collectibles = ContractsRegistry.FrozenCollectibles;
 
     int startID = constants.Length + rng.Length + collectibles.Length;
     int i = 0;
@@ -25,7 +27,7 @@ internal class DungeonTasksPatches
     }
 
     DungeonTasks.Instance.randomTasks = [.. rng, .. customContracts];
-    DungeonTasks.Instance.allTasks = [.. constants, .. rng, .. collectibles];
+    DungeonTasks.Instance.allTasks = [.. constants, .. rng, .. collectibles, .. customContracts];
 
     ContractQueenPlugin.Log.LogMessage($"Added {i} contract(s) to pool starting from ID {startID} to {startID + i - 1}");
   }
