@@ -49,7 +49,7 @@ public class FrogDatabaseDTO : FrogDataModel
     };
 
     FrogData.Add(dto);
-    ContractQueenPlugin.Log.LogDebug($"Created a DTO for frog: {mud.GetDigest()}");
+    ContractQueenPlugin.Log.LogDebug($"Created a new DTO for a frog");
     return dto;
   }
 
@@ -76,7 +76,10 @@ public class FrogDatabaseDTO : FrogDataModel
     var behaviors = GameObject.FindObjectsByType<FrogContractBehavior>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
     foreach (var item in behaviors)
     {
-      item.Data.MUDToken = new AssetMUD(item.GetComponent<FrogStateMachine>()).Identifier;
+      var mud = new AssetMUD(item.GetComponent<FrogStateMachine>());
+
+      item.Data.MUDToken = mud.Identifier;
+      ContractQueenPlugin.Log.LogDebug($"Mapped a DTO for frog:{mud.GetDigest()}");
       FrogData.Add(item.Data);
     }
 
