@@ -12,14 +12,13 @@ public class RescueFrogsTask : GameplayTaskSO
   [SerializeField]
   private int frogCount = 5;
 
-  public static RescueFrogsTask Factory()
+  public static RescueFrogsTask Create()
   {
-    var frog = new RescueFrogsTask()
-    {
-      nameLocalisationKey = ContractQueenPlugin.contractName,
-      descriptionLocalisationKey = ContractQueenPlugin.contractDesc,
-      pointValue = 200
-    };
+    var frog = CreateInstance<RescueFrogsTask>();
+
+    frog.nameLocalisationKey = ContractQueenPlugin.contractName;
+    frog.descriptionLocalisationKey = ContractQueenPlugin.contractDesc;
+    frog.pointValue = 200;
 
     return frog;
   }

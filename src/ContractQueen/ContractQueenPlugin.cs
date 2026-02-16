@@ -41,15 +41,15 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     SceneManager.sceneLoaded += OnSceneChange;
 
     ContractsModule contracts = new(Id);
-    contracts.RegisterContract("RescueFrogsQuest", RescueFrogsTask.Factory());
+    contracts.RegisterContract("RescueFrogsQuest", RescueFrogsTask.Create());
 
 #if DEBUG
     //Adds debug contracts for debugging
-    contracts.RegisterContract("RescueFrogsQuest2", RescueFrogsTask.Factory());
-    contracts.RegisterContract("RescueFrogsQuest3", RescueFrogsTask.Factory());
-    contracts.RegisterContract("RescueFrogsQuest4", RescueFrogsTask.Factory());
-    contracts.RegisterContract("RescueFrogsQuest5", RescueFrogsTask.Factory());
-    contracts.RegisterContract("RescueFrogsQuest6", RescueFrogsTask.Factory());
+    contracts.RegisterContract("RescueFrogsQuest2", RescueFrogsTask.Create());
+    contracts.RegisterContract("RescueFrogsQuest3", RescueFrogsTask.Create());
+    contracts.RegisterContract("RescueFrogsQuest4", RescueFrogsTask.Create());
+    contracts.RegisterContract("RescueFrogsQuest5", RescueFrogsTask.Create());
+    contracts.RegisterContract("RescueFrogsQuest6", RescueFrogsTask.Create());
 #endif
 
   }
