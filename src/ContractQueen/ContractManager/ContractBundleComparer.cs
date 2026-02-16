@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ContractQueen.ContractManager;
 
-public class ContractBundleComparer : IComparer<ContractBundle>
+internal class ContractBundleComparer : IComparer<ContractBundle>
 {
 
   public static readonly IComparer<ContractBundle> NameOrdinal = new ContractBundleComparer();

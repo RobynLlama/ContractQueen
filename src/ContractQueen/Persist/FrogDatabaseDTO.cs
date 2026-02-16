@@ -7,20 +7,33 @@ using YAPYAP.Npc.Frog;
 
 namespace ContractQueen.Persist;
 
+/// <summary>
+/// A DTO for storing and managing the list of individual frog DTOs
+/// </summary>
 [Serializable]
 public class FrogDatabaseDTO : FrogDataModel
 {
-  [SerializeField]
   internal Dictionary<AssetMUD, FrogDataDTO> AssetLookupTable = [];
 
+  /// <summary>
+  /// A list of individual frog data
+  /// </summary>
   [SerializeField]
   public List<FrogDataDTO> FrogData;
 
+  /// <summary>
+  /// Creates a new 
+  /// </summary>
   public FrogDatabaseDTO()
   {
     FrogData = [];
   }
 
+  /// <summary>
+  /// Returns the DTO for a given MUD or creates a new one
+  /// </summary>
+  /// <param name="mud">The Mostly Unique ID of the DTO</param>
+  /// <returns></returns>
   public FrogDataDTO GetFrogData(AssetMUD mud)
   {
     if (AssetLookupTable.TryGetValue(mud, out var data))
@@ -40,6 +53,7 @@ public class FrogDatabaseDTO : FrogDataModel
     return dto;
   }
 
+  /// <inheritdoc/>
   public override void OnAfterSerialize()
   {
     ContractQueenPlugin.Log.LogDebug($"Received serialization callback, {FrogData.Count} items in list");
@@ -50,6 +64,7 @@ public class FrogDatabaseDTO : FrogDataModel
       AssetLookupTable[new(item.MUDToken)] = item;
   }
 
+  /// <inheritdoc/>
   public override void OnBeforeSerialize()
   {
     //this should clean up any unused references and refresh all

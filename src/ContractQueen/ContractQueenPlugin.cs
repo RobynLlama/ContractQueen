@@ -9,6 +9,9 @@ using YapLocalizer;
 
 namespace ContractQueen;
 
+/// <summary>
+/// Bwaa
+/// </summary>
 [BepInAutoPlugin]
 [BepInDependency("com.github.darmuh.yaplocalizer")]
 [BepInDependency(FrogDataLib.FrogDataPlugin.Id)]
@@ -16,8 +19,8 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
 {
   internal static ManualLogSource Log { get; private set; }
 
-  public const string contractName = "CONTRACT_QUEEN_TEST_CONTRACT_NAME";
-  public const string contractDesc = "CONTRACT_QUEEN_TEST_CONTRACT_DESC";
+  internal const string contractName = "CONTRACT_QUEEN_TEST_CONTRACT_NAME";
+  internal const string contractDesc = "CONTRACT_QUEEN_TEST_CONTRACT_DESC";
 
   private void Awake()
   {
