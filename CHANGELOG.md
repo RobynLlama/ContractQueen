@@ -18,3 +18,8 @@
 - Changes timing of contract insertion
 - Now freezes main game contracts when freezing internal list of custom content
 - Fix: Now uses the proper factory pattern for frog quests (addresses a warning in Player.log)
+
+## v0.3.0
+
+- Uses FrogDataLib to track which frogs have been rescued
+- Adds XMLDocs to Thunderstore package for dependents
