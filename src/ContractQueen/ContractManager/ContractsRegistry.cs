@@ -10,6 +10,9 @@ internal static class ContractsRegistry
   private static readonly SortedDictionary<string, SortedSet<ContractBundle>> Registry = new(StringComparer.Ordinal);
   private static bool Finalized = false;
   private static IReadOnlyList<GameplayTaskSO> _cachedLockedList = [];
+  internal static GameplayTaskSO[] FrozenConstants { get; private set; } = [];
+  internal static GameplayTaskSO[] FrozenCollectibles { get; private set; } = [];
+  internal static GameplayTaskSO[] FrozenRandoms { get; private set; } = [];
   public static IReadOnlyList<GameplayTaskSO> LockedList => _cachedLockedList;
 
   internal static SortedSet<ContractBundle> EnsureGUID(string GUID)
@@ -29,16 +32,28 @@ internal static class ContractsRegistry
 
   internal static void Lock()
   {
-    List<GameplayTaskSO> items = [];
+    try
+    {
 
-    foreach (var item in Registry.Values)
-      foreach (var bundle in item)
-        items.Add(bundle.Contract);
+      List<GameplayTaskSO> items = [];
 
-    ContractQueenPlugin.Log.LogMessage(ListContracts());
+      foreach (var item in Registry.Values)
+        foreach (var bundle in item)
+          items.Add(bundle.Contract);
 
-    _cachedLockedList = items.AsReadOnly();
-    Finalized = true;
+      FrozenConstants = DungeonTasks.Instance.constantTasks;
+      FrozenRandoms = DungeonTasks.Instance.randomTasks;
+      FrozenCollectibles = DungeonTasks.Instance.collectableTasks;
+
+      ContractQueenPlugin.Log.LogMessage(ListContracts());
+
+      _cachedLockedList = items.AsReadOnly();
+      Finalized = true;
+    }
+    catch (Exception ex)
+    {
+      ContractQueenPlugin.Log.LogError($"{ex.Message}\n\n{ex.StackTrace}");
+    }
   }
 
   public static string ListContracts()
