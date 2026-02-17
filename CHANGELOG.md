@@ -23,3 +23,7 @@
 
 - Uses FrogDataLib to track which frogs have been rescued
 - Adds XMLDocs to Thunderstore package for dependents
+
+## v0.3.1
+
+- Fixes lazy initialization of the frog database that prevented loading save data on the first load of each session
