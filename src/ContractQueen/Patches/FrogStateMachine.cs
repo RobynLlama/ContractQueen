@@ -19,7 +19,7 @@ internal static class FrogStateMachinePatches
     var comp = __instance.AddComponent<FrogContractBehavior>();
     AssetMUD token = new(__instance);
 
-    var dto = FrogDatabase.Database.GetFrogData(token);
+    var dto = ContractQueenPlugin.Database.GetFrogData(token);
     comp.Data = dto;
   }
 }

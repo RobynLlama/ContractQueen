@@ -4,6 +4,8 @@ using BepInEx.Logging;
 using ContractQueen.ContractManager;
 using ContractQueen.Contracts;
 using ContractQueen.Patches;
+using ContractQueen.Persist;
+using FrogDataLib.DataManagement;
 using HarmonyLib;
 using YapLocalizer;
 
@@ -22,6 +24,9 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
   internal const string contractName = "CONTRACT_QUEEN_TEST_CONTRACT_NAME";
   internal const string contractDesc = "CONTRACT_QUEEN_TEST_CONTRACT_DESC";
 
+  internal static FrogDataContainerSimple<FrogDatabaseDTO> container;
+  internal static FrogDatabaseDTO Database => container.Data;
+
   private void Awake()
   {
     Log = Logger;
@@ -38,6 +43,9 @@ public partial class ContractQueenPlugin : BaseUnityPlugin
     patcher.PatchAll(typeof(DungeonTasksPatches));
     patcher.PatchAll(typeof(NetworkPuppetPropPatches));
     patcher.PatchAll(typeof(FrogStateMachinePatches));
+
+    //Create database
+    container = new(Id);
 
     Log.LogInfo($"Patch count: {patcher.GetPatchedMethods().Count()}");
 
