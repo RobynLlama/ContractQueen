@@ -1,4 +1,5 @@
 using System;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace ContractQueen.Persist;
@@ -17,4 +18,14 @@ public class FrogDataDTO()
   /// Has this frog been counted by the quest system before?
   /// </summary>
   public bool HasBeenCounted = false;
+
+  /// <summary>
+  /// This frog's cute lil name
+  /// </summary>
+  public string Name = string.Empty;
+
+  /// <summary>
+  /// This frog's interesting persona
+  /// </summary>
+  public string Persona = string.Empty;
 }
