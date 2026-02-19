@@ -38,6 +38,15 @@ public class FrogContractBehavior : MonoBehaviour
   }
 
   /// <summary>
+  /// Runs after the DTO is set
+  /// </summary>
+  public void PostAwake()
+  {
+    Owner.interactStr = $"{Data.Name} ({Data.Persona})";
+    Owner._interactKey = string.Empty;
+  }
+
+  /// <summary>
   /// Set counted so this frog won't be counted again
   /// </summary>
   public void Count() =>
