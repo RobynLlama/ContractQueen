@@ -10,7 +10,6 @@ namespace ContractQueen.Persist;
 /// <summary>
 /// A DTO for storing and managing the list of individual frog DTOs
 /// </summary>
-[Serializable]
 public class FrogDatabaseDTO : FrogDataModel
 {
   internal Dictionary<AssetMUD, FrogDataDTO> AssetLookupTable = [];
@@ -18,7 +17,6 @@ public class FrogDatabaseDTO : FrogDataModel
   /// <summary>
   /// A list of individual frog data
   /// </summary>
-  [SerializeField]
   public List<FrogDataDTO> FrogData;
 
   /// <summary>
