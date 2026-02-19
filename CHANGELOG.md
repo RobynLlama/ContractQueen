@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.3
+
+- Added Names and Personas to frogs
+  - Personas have rarities from Common, Uncommon, Rare, and Legendary
+- Updated to remove old attributes not required by FrogDataLib
+
 ## v0.3.2
 
 - Added new changelogs to the top of this file instead
