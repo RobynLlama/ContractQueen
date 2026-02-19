@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using ContractQueen.Behaviors;
 using FrogDataLib.DataManagement;
@@ -40,10 +39,13 @@ public class FrogDatabaseDTO : FrogDataModel
       return data;
     }
 
+    var (fName, fPersona) = FrogDetailsManager.GetCompleteFrogProfile();
 
     var dto = new FrogDataDTO()
     {
-      MUDToken = mud.Identifier
+      MUDToken = mud.Identifier,
+      Name = fName,
+      Persona = fPersona,
     };
 
     FrogData.Add(dto);
@@ -59,7 +61,17 @@ public class FrogDatabaseDTO : FrogDataModel
 
     //Map assets to their MUD token for use in the load callback
     foreach (var item in FrogData)
+    {
+      if (string.IsNullOrEmpty(item.Name) || string.IsNullOrEmpty(item.Persona))
+      {
+        var (Name, Persona) = FrogDetailsManager.GetCompleteFrogProfile();
+        item.Name = Name;
+        item.Persona = Persona;
+      }
+
       AssetLookupTable[new(item.MUDToken)] = item;
+    }
+
   }
 
   /// <inheritdoc/>
